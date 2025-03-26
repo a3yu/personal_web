@@ -4,30 +4,65 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 254, 243, 199;
+  --background-end-rgb: 254, 243, 199;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-inconsolata), monospace;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.retro-button {
+  @apply bg-amber-800 text-amber-100 px-3 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] border border-black hover:translate-y-1 hover:translate-x-1 hover:shadow-none transition-all;
+}
+
+.retro-panel {
+  @apply bg-amber-100 p-4 border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)] mb-6;
+}
+
+.retro-text {
+  font-family: var(--font-inconsolata), monospace;
+}
+
+/* Retro blog styling */
+.prose code {
+  @apply bg-amber-50 text-amber-900 px-1 py-0.5 border border-amber-200 font-[var(--font-inconsolata)];
+}
+
+.prose blockquote {
+  @apply border-l-4 border-amber-800 pl-4 italic text-amber-800;
+}
+
+.prose pre {
+  @apply bg-amber-800 text-amber-50 p-4 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)] my-4 overflow-auto font-[var(--font-inconsolata)];
+}
+
+.prose img {
+  @apply border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)];
+}
+
+.prose hr {
+  @apply border-amber-800;
 }
